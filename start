@@ -4,9 +4,9 @@
 _get_ziplink () {
     local regex
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "jepthoniq" ]]
+    if [[ $UPSTREAM_REPO == "sourec" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL2plcHRob25pcS9qZXB0aG9uL2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
+        echo "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==" | base64 -d
     elif [[ $UPSTREAM_REPO =~ $regex ]]
     then
         if [[ $UPSTREAM_REPO_BRANCH ]]
@@ -16,7 +16,7 @@ _get_ziplink () {
             echo "${UPSTREAM_REPO}/archive/master.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL2plcHRob25pcS9qZXB0aG9uL2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
+        echo "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==" | base64 -d
     fi
 }
 
@@ -24,14 +24,14 @@ _get_repolink () {
     local regex
     local rlink
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "jepthoniq" ]]
+    if [[ $UPSTREAM_REPO == "sourec" ]]
     then
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL2plcHRob25pcS9qZXB0aG9uLmdpdA==" | base64 -d`
+        rlink=`echo "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==" | base64 -d`
     elif [[ $UPSTREAM_REPO =~ $regex ]]
     then
         rlink=`echo "${UPSTREAM_REPO}"`
     else
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL2plcHRob25pcS9qZXB0aG9uLmdpdA==" | base64 -d`
+        rlink=`echo "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==" | base64 -d`
     fi
     echo "$rlink"
 }
@@ -44,7 +44,7 @@ _run_python_code() {
 _run_catpack_git() {
     $(_run_python_code 'from git import Repo
 import sys
-OFFICIAL_UPSTREAM_REPO = "https://github.com/jepthoniq/jepthon"
+OFFICIAL_UPSTREAM_REPO = "https://github.com/sourec/jepthon"
 ACTIVE_BRANCH_NAME = "master"
 repo = Repo.init()
 origin = repo.create_remote("temponame", OFFICIAL_UPSTREAM_REPO)
